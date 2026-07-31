@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emeklilik Anı Sayfası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.75);
+            --border-color: rgba(212, 175, 55, 0.3);
+            --accent-gold: #d4af37;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15), transparent 70%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05), transparent 50%);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            padding: 20px 15px 60px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .company-badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--accent-gold);
+            padding-bottom: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Tarih ve Hizmet Süresi */
+        .service-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px 10px;
+        }
+
+        .info-title {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .info-date {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        /* Video / Medya Alanı */
+        .media-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+            max-height: 380px;
+            object-fit: cover;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mesaj Alanı */
+        .message-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #e6edf3;
+            font-style: italic;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        /* Emeklilik Sayacı */
+        .retirement-counter {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(22, 27, 34, 0.8) 100%);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .counter-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin: 10px 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Başlık Kartı -->
+    <div class="card">
+        <!-- İŞ YERİ İSMİ -->
+        <div class="company-badge" id="companyName">İŞ YERİ ADI A.Ş.</div>
+        
+        <!-- EMEKLİ OLAN ARKADAŞIN ADI -->
+        <h1 id="employeeName">Ahmet YILMAZ</h1>
+        <p class="subtitle" id="jobTitle">Kıdemli Bakım Onarım Uzmanı</p>
+
+        <!-- BAŞLANGIÇ & BİTİŞ TARİHLERİ -->
+        <div class="service-info">
+            <div class="info-box">
+                <div class="info-title">İşe Başlama</div>
+                <div class="info-date" id="startDateText">15.03.1998</div>
+            </div>
+            <div class="info-box">
+                <div class="info-title">Emeklilik Tarihi</div>
+                <div class="info-date" id="endDateText">01.08.2026</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video & Fotoğraf Alanı -->
+    <div class="card">
+        <h3 style="font-family:'Cinzel'; color: var(--accent-gold); margin-bottom: 15px; font-size: 1.1rem;">Unutulmaz Anılar</h3>
+        
+        <!-- VEDA VİDEOSU (Klasördeki video ismi) -->
+        <div class="media-container">
+            <video controls poster="kapak.jpg">
+                <source src="veda_videosu.mp4" type="video/mp4">
+                Tarayıcınız video etiketini desteklemiyor.
+            </video>
+        </div>
+
+        <!-- FOTOĞRAF GALERİSİ -->
+        <div class="photo-gallery">
+            <img src="foto1.jpg" alt="Anı 1">
+            <img src="foto2.jpg" alt="Anı 2">
+            <img src="foto3.jpg" alt="Anı 3">
+        </div>
+    </div>
+
+    <!-- Mesaj Kartı -->
+    <div class="card">
+        <h3 style="font-family:'Cinzel'; color: var(--accent-gold); margin-bottom: 12px; font-size: 1.1rem;">Teşekkürlerimizle</h3>
+        <p class="message-text">
+            "Yıllar boyunca kurumumuza kattığın tüm emekler, göstermiş olduğun dostluk ve iş disiplinin için sonsuz teşekkür ederiz. Birlikte geçirdiğimiz her anı ve paylaştığımız başarıları unutmayacağız. Hayatının bu yeni ve özel döneminde sağlık, huzur ve mutluluk dileriz."
+        </p>
+    </div>
+
+    <!-- EMEKLİLİK GÜN SAYACI -->
+    <div class="card retirement-counter">
+        <div class="info-title" style="color: var(--accent-gold);">Emekliliğin Tadını Çıkarıyorsun</div>
+        <div class="counter-number" id="daysCounter">0</div>
+        <div style="font-size: 0.85rem; color: var(--text-secondary);">GÜNDÜR EMEKLİSİN</div>
+    </div>
+
+    <footer>
+        Çalışma Arkadaşlarından Sevgilerle ❤️
+    </footer>
+
+</div>
+
+<script>
+    // --- BİLGİLERİ BURADAN DEĞİŞTİREBİLİRSİNİZ ---
+    const retirementDateStr = "2026-08-01"; // Emeklilik Tarihi (YIL-AY-GÜN)
+
+    // Emeklilikten Bu Yana Geçen Gün Sayısını Hesapla
+    function updateCounter() {
+        const retirementDate = new Date(retirementDateStr);
+        const today = new Date();
+        
+        // Zaman farkını milisaniye cinsinden al
+        const diffTime = today - retirementDate;
+        
+        // Güne çevir
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays < 0) {
+            document.getElementById('daysCounter').innerText = "0";
+        } else {
+            document.getElementById('daysCounter').innerText = diffDays;
+        }
+    }
+
+    updateCounter();
+</script>
+
+</body>
+</html>
