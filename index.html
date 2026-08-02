@@ -120,6 +120,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
         }
 
         .hero-banner img {
@@ -128,6 +129,11 @@
             max-height: 420px;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-banner:hover img {
+            transform: scale(1.02);
         }
 
         .hero-caption {
@@ -176,6 +182,13 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
         }
 
         .photo-card img {
@@ -245,6 +258,47 @@
             font-weight: bold;
         }
 
+        /* TAM EKRAN FOTOĞRAF BÜYÜTME (LIGHTBOX) STİLLERİ */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 95%;
+            max-height: 85vh;
+            border-radius: 12px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.2rem;
+            color: var(--accent-gold-light);
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 1;
+        }
+
         footer {
             text-align: center;
             font-size: 0.8rem;
@@ -260,34 +314,27 @@
     <!-- ADIM 1: İŞ YERİ, TARİH, KİŞİ İSMİ, ÜNVAN VE BÜYÜK FOTOĞRAF -->
     <div class="card">
         <div class="top-header">
-            <!-- DÜZENLEME: İŞ YERİ İSMİNİ BURADAN DEĞİŞTİRİN -->
-            <div class="company-badge">MUĞLA İL JANDARMA KOMUTANLIĞI.</div>
-            
-            <!-- SAĞ ÜSTTE GÜNÜMÜZ TARİHİ (Otomatik hesaplanır) -->
-            <div class="current-date-badge" id="currentDateBadge">02.08.2026</div>
+            <div class="company-badge">İŞ YERİ İSMİ A.Ş.</div>
+            <div class="current-date-badge" id="currentDateBadge">--.--.----</div>
         </div>
 
-        <!-- DÜZENLEME: EMEKLİ OLAN ARKADAŞIN ADI VE ÜNVANI -->
         <h1>Ahmet YILMAZ</h1>
-        <div class="subtitle">KIDEMLİ BAŞÇAVUŞ</div>
+        <div class="subtitle">Kıdemli Bakım Onarım Uzmanı</div>
         
-        <!-- DÜZENLEME: EMEKLİLİK TARİHİ METNİ -->
         <div class="retirement-date-box">
             Emeklilik Tarihi: <strong>01.08.2026</strong>
         </div>
         
-        <!-- BÜYÜK VE GENİŞ GRUP FOTOĞRAFI -->
-        <!-- DÜZENLEME: 'ekip_buyuk.jpg' yerine kendi büyük fotoğrafınızın adını yazın -->
+        <!-- BÜYÜK GRUP FOTOĞRAFI -->
         <div class="hero-banner">
-            <img src="ekip_buyuk.jpg" alt="Tüm Ekip Hatıra Fotoğrafı">
-            <div class="hero-caption">Birlikte Geçen Unutulmaz Yılların Anısına</div>
+            <img src="ekip_buyuk.jpg" alt="Tüm Ekip Hatıra Fotoğrafı" class="zoomable-img">
+            <div class="hero-caption">Birlikte Geçen Unutulmaz Yılların Anısına (Dokun ve Büyüt 🔍)</div>
         </div>
     </div>
 
     <!-- ADIM 2: ANILARDAN OLUŞAN VEDA VİDEOSU -->
     <div class="card">
         <h3 class="section-title">Anı Videosu</h3>
-        <!-- DÜZENLEME: 'veda_videosu.mp4' yerine videonuzun adını yazın -->
         <div class="media-container">
             <video controls poster="video_kapak.jpg">
                 <source src="veda_videosu.mp4" type="video/mp4">
@@ -299,30 +346,29 @@
     <!-- ADIM 3: İŞ ARKADAŞLARI İLE FOTOĞRAFLAR -->
     <div class="card">
         <h3 class="section-title">Ekip ve Çalışma Anıları</h3>
-        <!-- DÜZENLEME: Fotoğraf isimlerini ve altındaki kısa açıklamaları değiştirin -->
         <div class="photo-gallery">
             <div class="photo-card">
-                <img src="foto1.jpg" alt="Anı 1">
+                <img src="foto1.jpg" alt="Anı 1" class="zoomable-img">
                 <div class="photo-desc">Saha Ekibi ile</div>
             </div>
             <div class="photo-card">
-                <img src="foto2.jpg" alt="Anı 2">
+                <img src="foto2.jpg" alt="Anı 2" class="zoomable-img">
                 <div class="photo-desc">Atölye Anıları</div>
             </div>
             <div class="photo-card">
-                <img src="foto3.jpg" alt="Anı 3">
+                <img src="foto3.jpg" alt="Anı 3" class="zoomable-img">
                 <div class="photo-desc">Kutlamalar</div>
             </div>
             <div class="photo-card">
-                <img src="foto4.jpg" alt="Anı 4">
+                <img src="foto4.jpg" alt="Anı 4" class="zoomable-img">
                 <div class="photo-desc">Mola Sohbetleri</div>
             </div>
             <div class="photo-card">
-                <img src="foto5.jpg" alt="Anı 5">
+                <img src="foto5.jpg" alt="Anı 5" class="zoomable-img">
                 <div class="photo-desc">Proje Tamamlama</div>
             </div>
             <div class="photo-card">
-                <img src="foto6.jpg" alt="Anı 6">
+                <img src="foto6.jpg" alt="Anı 6" class="zoomable-img">
                 <div class="photo-desc">Veda Yemeği</div>
             </div>
         </div>
@@ -331,7 +377,6 @@
     <!-- ADIM 4: TEŞEKKÜR MESAJI -->
     <div class="card">
         <h3 class="section-title">Sonsuz Teşekkürlerimizle</h3>
-        <!-- DÜZENLEME: İstediğiniz veda/teşekkür mesajını buraya yazın -->
         <p class="message-text">
             "Yıllar boyunca kurumumuza kattığın tüm emekler, göstermiş olduğun dostluk, tecrübe ve iş disiplinin için sonsuz teşekkür ederiz. Birlikte geçirdiğimiz her anı ve paylaştığımız başarıları gururla hatırlayacağız. Hayatının bu yeni döneminde sevdiklerinle birlikte sağlık, huzur ve mutluluk dileriz."
         </p>
@@ -344,12 +389,11 @@
         <div style="font-size: 0.85rem; color: var(--text-secondary);">GÜNDÜR EMEKLİSİN</div>
     </div>
 
-    <!-- ADIM 6: EMEĞİ GEÇENLER LİSTESİ (30 KİŞİLİK YERLEŞİK LİSTE) -->
+    <!-- ADIM 6: EMEĞİ GEÇENLER LİSTESİ -->
     <div class="card">
         <h3 class="section-title" style="margin-bottom: 8px;">Emeği Geçen Çalışma Arkadaşları</h3>
         <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">Bu özel anı sayfasının hazırlanmasında katkıda bulunanlar:</p>
         
-        <!-- DÜZENLEME: 30 Arkadaşınızın İsimlerini Buradan Güncelleyin -->
         <div class="contributors-grid">
             <div class="contributor-item">Ali KAYA</div>
             <div class="contributor-item">Mehmet DEMİR</div>
@@ -390,14 +434,15 @@
 
 </div>
 
-<script>
-    // --- KOD PARAMETRELERİ DÜZENLEME ALANI ---
+<!-- TAM EKRAN FOTOĞRAFI GÖSTEREN MODAL -->
+<div class="lightbox-modal" id="lightboxModal">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="Büyütülen Görsel" class="lightbox-img" id="lightboxImg">
+</div>
 
-    // 1. EMEKLİLİK TARİHİ HESAPLAMA (YIL-AY-GÜN formatında yazın)
-    // DÜZENLEME: Arkadaşınızın emekli olduğu gerçek tarihi buraya girin:
+<script>
     const retirementDateStr = "2026-08-01"; 
 
-    // Kaç Gündür Emekli Olduğunu Hesaplayan Fonksiyon
     function updateCounter() {
         const retirementDate = new Date(retirementDateStr);
         const today = new Date();
@@ -411,7 +456,6 @@
         }
     }
 
-    // Sağ Üst Köşedeki Günümüz Tarihini Otomatik Yazan Fonksiyon
     function setTodayDate() {
         const today = new Date();
         const day = String(today.getDate()).padStart(2, '0');
@@ -419,6 +463,29 @@
         const year = today.getFullYear();
         document.getElementById('currentDateBadge').innerText = `${day}.${month}.${year}`;
     }
+
+    // FOTOĞRAF BÜYÜTME (LIGHTBOX) MANTIĞI
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const closeModal = document.getElementById('lightboxClose');
+    const zoomableImages = document.querySelectorAll('.zoomable-img');
+
+    zoomableImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.classList.add('active');
+            modalImg.src = this.src;
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target !== modalImg) {
+            modal.classList.remove('active');
+        }
+    });
 
     setTodayDate();
     updateCounter();
