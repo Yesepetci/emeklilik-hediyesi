@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.75);
-            --border-color: rgba(212, 175, 55, 0.3);
+            --bg-color: #0b0e14;
+            --card-bg: rgba(22, 27, 34, 0.85);
+            --border-color: rgba(212, 175, 55, 0.35);
             --accent-gold: #d4af37;
+            --accent-gold-light: #f3e5ab;
             --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
+            --text-secondary: #9ea7b3;
         }
 
         * {
@@ -24,8 +25,8 @@
         body {
             background-color: var(--bg-color);
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15), transparent 70%),
-                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.05), transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.18), transparent 75%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.08), transparent 50%);
             color: var(--text-primary);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -35,7 +36,7 @@
         }
 
         .container {
-            max-width: 680px;
+            max-width: 720px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -45,76 +46,107 @@
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 28px 20px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 18px;
+            padding: 25px 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        /* 1. ÜST BAŞLIK VE SAĞ ÜST TARİH ALANI */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .company-badge {
-            display: inline-block;
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 3px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             color: var(--accent-gold);
             text-transform: uppercase;
-            border-bottom: 1px solid var(--accent-gold);
-            padding-bottom: 4px;
-            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .current-date-badge {
+            font-size: 0.75rem;
+            color: var(--accent-gold-light);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 20px;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             font-weight: 700;
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        /* Tarih ve Hizmet Süresi */
-        .service-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .info-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 15px 10px;
-        }
-
-        .info-title {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .info-date {
             font-size: 1rem;
-            font-weight: 600;
+            color: var(--accent-gold-light);
+            margin-bottom: 10px;
+        }
+
+        .retirement-date-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .retirement-date-box strong {
             color: var(--accent-gold);
         }
 
-        /* Video / Medya Alanı */
+        /* 2. BÜYÜK VE GENİŞ GRUP FOTOĞRAFI */
+        .hero-banner {
+            width: 100%;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-caption {
+            background: rgba(11, 14, 20, 0.85);
+            color: var(--accent-gold-light);
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            text-align: center;
+            font-style: italic;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* VİDEO ALANI */
         .media-container {
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
             background: #000;
             border: 1px solid var(--border-color);
-            margin-bottom: 15px;
         }
 
         video {
@@ -124,49 +156,98 @@
             object-fit: cover;
         }
 
+        /* FOTOĞRAF GALERİSİ */
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
         .photo-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
         }
 
-        .photo-gallery img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
+        .photo-card {
+            border-radius: 10px;
+            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        /* Mesaj Alanı */
+        .photo-card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-card .photo-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding: 6px;
+            text-align: center;
+        }
+
+        /* TEŞEKKÜR MESAJI */
         .message-text {
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #e6edf3;
             font-style: italic;
             text-align: justify;
             text-align-last: center;
         }
 
-        /* Emeklilik Sayacı */
+        /* EMEKLİLİK SAYACI */
         .retirement-counter {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(22, 27, 34, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(22, 27, 34, 0.9) 100%);
             border: 1px solid var(--accent-gold);
         }
 
         .counter-number {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--accent-gold);
-            margin: 10px 0;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            margin: 8px 0;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* EMEĞİ GEÇENLER LİSTESİ */
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .contributor-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 8px 6px;
+            font-size: 0.82rem;
+            color: #e6edf3;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .contributor-item::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-weight: bold;
         }
 
         footer {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             margin-top: 10px;
         }
@@ -176,82 +257,151 @@
 
 <div class="container">
 
-    <!-- Başlık Kartı -->
+    <!-- ADIM 1: İŞ YERİ, TARİH, KİŞİ İSMİ, ÜNVAN VE BÜYÜK FOTOĞRAF -->
     <div class="card">
-        <!-- İŞ YERİ İSMİ -->
-        <div class="company-badge" id="companyName">İŞ YERİ ADI A.Ş.</div>
-        
-        <!-- EMEKLİ OLAN ARKADAŞIN ADI -->
-        <h1 id="employeeName">Ahmet YILMAZ</h1>
-        <p class="subtitle" id="jobTitle">Kıdemli Bakım Onarım Uzmanı</p>
+        <div class="top-header">
+            <!-- DÜZENLEME: İŞ YERİ İSMİNİ BURADAN DEĞİŞTİRİN -->
+            <div class="company-badge">İŞ YERİ İSMİ A.Ş.</div>
+            
+            <!-- SAĞ ÜSTTE GÜNÜMÜZ TARİHİ (Otomatik hesaplanır) -->
+            <div class="current-date-badge" id="currentDateBadge">02.08.2026</div>
+        </div>
 
-        <!-- BAŞLANGIÇ & BİTİŞ TARİHLERİ -->
-        <div class="service-info">
-            <div class="info-box">
-                <div class="info-title">İşe Başlama</div>
-                <div class="info-date" id="startDateText">15.03.1998</div>
-            </div>
-            <div class="info-box">
-                <div class="info-title">Emeklilik Tarihi</div>
-                <div class="info-date" id="endDateText">01.08.2026</div>
-            </div>
+        <!-- DÜZENLEME: EMEKLİ OLAN ARKADAŞIN ADI VE ÜNVANI -->
+        <h1>Ahmet YILMAZ</h1>
+        <div class="subtitle">Kıdemli Bakım Onarım Uzmanı</div>
+        
+        <!-- DÜZENLEME: EMEKLİLİK TARİHİ METNİ -->
+        <div class="retirement-date-box">
+            Emeklilik Tarihi: <strong>01.08.2026</strong>
+        </div>
+        
+        <!-- BÜYÜK VE GENİŞ GRUP FOTOĞRAFI -->
+        <!-- DÜZENLEME: 'ekip_buyuk.jpg' yerine kendi büyük fotoğrafınızın adını yazın -->
+        <div class="hero-banner">
+            <img src="ekip_buyuk.jpg" alt="Tüm Ekip Hatıra Fotoğrafı">
+            <div class="hero-caption">Birlikte Geçen Unutulmaz Yılların Anısına</div>
         </div>
     </div>
 
-    <!-- Video & Fotoğraf Alanı -->
+    <!-- ADIM 2: ANILARDAN OLUŞAN VEDA VİDEOSU -->
     <div class="card">
-        <h3 style="font-family:'Cinzel'; color: var(--accent-gold); margin-bottom: 15px; font-size: 1.1rem;">Unutulmaz Anılar</h3>
-        
-        <!-- VEDA VİDEOSU (Klasördeki video ismi) -->
+        <h3 class="section-title">Anı Videosu</h3>
+        <!-- DÜZENLEME: 'veda_videosu.mp4' yerine videonuzun adını yazın -->
         <div class="media-container">
-            <video controls poster="kapak.jpg">
+            <video controls poster="video_kapak.jpg">
                 <source src="veda_videosu.mp4" type="video/mp4">
                 Tarayıcınız video etiketini desteklemiyor.
             </video>
         </div>
+    </div>
 
-        <!-- FOTOĞRAF GALERİSİ -->
+    <!-- ADIM 3: İŞ ARKADAŞLARI İLE FOTOĞRAFLAR -->
+    <div class="card">
+        <h3 class="section-title">Ekip ve Çalışma Anıları</h3>
+        <!-- DÜZENLEME: Fotoğraf isimlerini ve altındaki kısa açıklamaları değiştirin -->
         <div class="photo-gallery">
-            <img src="foto1.jpg" alt="Anı 1">
-            <img src="foto2.jpg" alt="Anı 2">
-            <img src="foto3.jpg" alt="Anı 3">
+            <div class="photo-card">
+                <img src="foto1.jpg" alt="Anı 1">
+                <div class="photo-desc">Saha Ekibi ile</div>
+            </div>
+            <div class="photo-card">
+                <img src="foto2.jpg" alt="Anı 2">
+                <div class="photo-desc">Atölye Anıları</div>
+            </div>
+            <div class="photo-card">
+                <img src="foto3.jpg" alt="Anı 3">
+                <div class="photo-desc">Kutlamalar</div>
+            </div>
+            <div class="photo-card">
+                <img src="foto4.jpg" alt="Anı 4">
+                <div class="photo-desc">Mola Sohbetleri</div>
+            </div>
+            <div class="photo-card">
+                <img src="foto5.jpg" alt="Anı 5">
+                <div class="photo-desc">Proje Tamamlama</div>
+            </div>
+            <div class="photo-card">
+                <img src="foto6.jpg" alt="Anı 6">
+                <div class="photo-desc">Veda Yemeği</div>
+            </div>
         </div>
     </div>
 
-    <!-- Mesaj Kartı -->
+    <!-- ADIM 4: TEŞEKKÜR MESAJI -->
     <div class="card">
-        <h3 style="font-family:'Cinzel'; color: var(--accent-gold); margin-bottom: 12px; font-size: 1.1rem;">Teşekkürlerimizle</h3>
+        <h3 class="section-title">Sonsuz Teşekkürlerimizle</h3>
+        <!-- DÜZENLEME: İstediğiniz veda/teşekkür mesajını buraya yazın -->
         <p class="message-text">
-            "Yıllar boyunca kurumumuza kattığın tüm emekler, göstermiş olduğun dostluk ve iş disiplinin için sonsuz teşekkür ederiz. Birlikte geçirdiğimiz her anı ve paylaştığımız başarıları unutmayacağız. Hayatının bu yeni ve özel döneminde sağlık, huzur ve mutluluk dileriz."
+            "Yıllar boyunca kurumumuza kattığın tüm emekler, göstermiş olduğun dostluk, tecrübe ve iş disiplinin için sonsuz teşekkür ederiz. Birlikte geçirdiğimiz her anı ve paylaştığımız başarıları gururla hatırlayacağız. Hayatının bu yeni döneminde sevdiklerinle birlikte sağlık, huzur ve mutluluk dileriz."
         </p>
     </div>
 
-    <!-- EMEKLİLİK GÜN SAYACI -->
+    <!-- ADIM 5: EMEKLİLİK GÜN SAYACI -->
     <div class="card retirement-counter">
         <div class="info-title" style="color: var(--accent-gold);">Emekliliğin Tadını Çıkarıyorsun</div>
         <div class="counter-number" id="daysCounter">0</div>
         <div style="font-size: 0.85rem; color: var(--text-secondary);">GÜNDÜR EMEKLİSİN</div>
     </div>
 
+    <!-- ADIM 6: EMEĞİ GEÇENLER LİSTESİ (30 KİŞİLİK YERLEŞİK LİSTE) -->
+    <div class="card">
+        <h3 class="section-title" style="margin-bottom: 8px;">Emeği Geçen Çalışma Arkadaşları</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">Bu özel anı sayfasının hazırlanmasında katkıda bulunanlar:</p>
+        
+        <!-- DÜZENLEME: 30 Arkadaşınızın İsimlerini Buradan Güncelleyin -->
+        <div class="contributors-grid">
+            <div class="contributor-item">Ali KAYA</div>
+            <div class="contributor-item">Mehmet DEMİR</div>
+            <div class="contributor-item">Ayşe YILMAZ</div>
+            <div class="contributor-item">Fatma ÇELİK</div>
+            <div class="contributor-item">Mustafa ÖZTÜRK</div>
+            <div class="contributor-item">Hasan AYDIN</div>
+            <div class="contributor-item">Hüseyin ARSLAN</div>
+            <div class="contributor-item">Zeynep POLAT</div>
+            <div class="contributor-item">Emre KOÇ</div>
+            <div class="contributor-item">Burak ŞAHİN</div>
+            <div class="contributor-item">Murat YILDIZ</div>
+            <div class="contributor-item">Sibel YILDIRIM</div>
+            <div class="contributor-item">Ömer ERDOĞAN</div>
+            <div class="contributor-item">Elif YALÇIN</div>
+            <div class="contributor-item">İbrahim ŞEN</div>
+            <div class="contributor-item">Kaan ACAR</div>
+            <div class="contributor-item">Gökhan KILIÇ</div>
+            <div class="contributor-item">Deniz GÜNEŞ</div>
+            <div class="contributor-item">Serkan BULUT</div>
+            <div class="contributor-item">Seda KESKİN</div>
+            <div class="contributor-item">Tolga ŞİMŞEK</div>
+            <div class="contributor-item">Merve ÖZCAN</div>
+            <div class="contributor-item">Volkan DOĞAN</div>
+            <div class="contributor-item">Gamze ASLAN</div>
+            <div class="contributor-item">Oğuzhan KAN</div>
+            <div class="contributor-item">Büşra YÜCEL</div>
+            <div class="contributor-item">Caner ŞAHİN</div>
+            <div class="contributor-item">Tuğba KAYA</div>
+            <div class="contributor-item">Yasin DEMİR</div>
+            <div class="contributor-item">Onur AKSOY</div>
+        </div>
+    </div>
+
     <footer>
-        Çalışma Arkadaşlarından Sevgilerle ❤️
+        Tüm Çalışma Arkadaşlarından Sevgilerle ❤️
     </footer>
 
 </div>
 
 <script>
-    // --- BİLGİLERİ BURADAN DEĞİŞTİREBİLİRSİNİZ ---
-    const retirementDateStr = "2026-08-01"; // Emeklilik Tarihi (YIL-AY-GÜN)
+    // --- KOD PARAMETRELERİ DÜZENLEME ALANI ---
 
-    // Emeklilikten Bu Yana Geçen Gün Sayısını Hesapla
+    // 1. EMEKLİLİK TARİHİ HESAPLAMA (YIL-AY-GÜN formatında yazın)
+    // DÜZENLEME: Arkadaşınızın emekli olduğu gerçek tarihi buraya girin:
+    const retirementDateStr = "2026-08-01"; 
+
+    // Kaç Gündür Emekli Olduğunu Hesaplayan Fonksiyon
     function updateCounter() {
         const retirementDate = new Date(retirementDateStr);
         const today = new Date();
-        
-        // Zaman farkını milisaniye cinsinden al
         const diffTime = today - retirementDate;
-        
-        // Güne çevir
         let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         
         if (diffDays < 0) {
@@ -261,6 +411,16 @@
         }
     }
 
+    // Sağ Üst Köşedeki Günümüz Tarihini Otomatik Yazan Fonksiyon
+    function setTodayDate() {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        document.getElementById('currentDateBadge').innerText = `${day}.${month}.${year}`;
+    }
+
+    setTodayDate();
     updateCounter();
 </script>
 
