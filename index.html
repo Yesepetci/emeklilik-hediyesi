@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE  html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -6,75 +6,6 @@
     <title>Emeklilik Anı Sayfası</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-    
-    .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 99999;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-content {
-    background: #161b22;
-    border: 1px solid #d4af37;
-    border-radius: 16px;
-    max-width: 500px;
-    width: 100%;
-    padding: 25px;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-    color: #fff;
-    text-align: center;
-}
-
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.8rem;
-    color: #d4af37;
-    cursor: pointer;
-}
-
-    
-    
-    .sticky-nav {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 9999;
-    display: flex;
-    gap: 10px;
-    background: rgba(11, 14, 20, 0.85);
-    padding: 8px 12px;
-    border-radius: 30px;
-    border: 1px solid #d4af37;
-    backdrop-filter: blur(10px);
-}
-.nav-btn {
-    background: rgba(212, 175, 55, 0.15);
-    border: 1px solid rgba(212, 175, 55, 0.35);
-    color: #f3e5ab;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-    
-    
         :root {
             --bg-color: #0b0e14;
             --card-bg: rgba(22, 27, 34, 0.85);
@@ -112,6 +43,65 @@
             gap: 25px;
         }
 
+        .sticky-nav {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 99999;
+            display: flex;
+            gap: 10px;
+            background: rgba(11, 14, 20, 0.9);
+            padding: 8px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--accent-gold);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-color);
+            color: var(--accent-gold-light);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .nav-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: var(--accent-gold-light);
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .nav-btn:hover::after {
+            opacity: 1;
+        }
+
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -123,8 +113,6 @@
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
             position: relative;
         }
-
-        /* 1. ÜST BAŞLIK VE SAĞ ÜST TARİH ALANI */
         .top-header {
             display: flex;
             justify-content: space-between;
@@ -181,7 +169,6 @@
             color: var(--accent-gold);
         }
 
-        /* 2. BÜYÜK VE GENİŞ GRUP FOTOĞRAFI */
         .hero-banner {
             width: 100%;
             border-radius: 14px;
@@ -215,7 +202,6 @@
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        /* VİDEO ALANI */
         .media-container {
             width: 100%;
             border-radius: 12px;
@@ -231,7 +217,6 @@
             object-fit: cover;
         }
 
-        /* FOTOĞRAF GALERİSİ */
         .section-title {
             font-family: 'Cinzel', serif;
             color: var(--accent-gold);
@@ -273,8 +258,6 @@
             padding: 6px;
             text-align: center;
         }
-
-        /* TEŞEKKÜR MESAJI */
         .message-text {
             font-size: 0.95rem;
             line-height: 1.8;
@@ -284,7 +267,6 @@
             text-align-last: center;
         }
 
-        /* EMEKLİLİK SAYACI */
         .retirement-counter {
             background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(22, 27, 34, 0.9) 100%);
             border: 1px solid var(--accent-gold);
@@ -299,7 +281,6 @@
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* EMEĞİ GEÇENLER LİSTESİ */
         .contributors-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -327,11 +308,116 @@
             font-weight: bold;
         }
 
-        /* TAM EKRAN FOTOĞRAF BÜYÜTME (LIGHTBOX) STİLLERİ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 999999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex !important;
+        }
+
+        .modal-content {
+            background: #161b22;
+            border: 1px solid var(--accent-gold);
+            border-radius: 16px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 1.8rem;
+            color: var(--accent-gold-light);
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-gold);
+        }
+
+        .timeline-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 18px;
+            border-left: 2px solid var(--accent-gold);
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .timeline-title {
+            font-size: 0.95rem;
+            color: #fff;
+            margin: 2px 0 4px 0;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .award-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .award-icon {
+            font-size: 1.8rem;
+        }
+
         .lightbox-modal {
             display: none;
             position: fixed;
-            z-index: 99999;
+            z-index: 9999999;
             top: 0;
             left: 0;
             width: 100%;
@@ -340,32 +426,16 @@
             backdrop-filter: blur(8px);
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            padding: 20px;
         }
 
-        .lightbox-modal.active {
-            display: flex;
-        }
+        .lightbox-modal.active { display: flex !important; }
 
         .lightbox-img {
             max-width: 95%;
             max-height: 85vh;
             border-radius: 12px;
             border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
             object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 2.2rem;
-            color: var(--accent-gold-light);
-            cursor: pointer;
-            font-weight: bold;
-            line-height: 1;
         }
 
         footer {
@@ -378,30 +448,35 @@
 </head>
 <body>
 
+<!-- 📌 SAĞ ÜSTTE SABİT MENÜ İKONLARI -->
+<nav class="sticky-nav">
+    <div class="nav-btn" onclick="openModal('cvModal')" data-tooltip="Öz Geçmiş">📜</div>
+    <div class="nav-btn" onclick="openModal('locationsModal')" data-tooltip="Görev Yerleri">📍</div>
+    <div class="nav-btn" onclick="openModal('awardsModal')" data-tooltip="Takdirler">🎖️</div>
+</nav>
+
 <div class="container">
 
-    <!-- ADIM 1: İŞ YERİ, TARİH, KİŞİ İSMİ, ÜNVAN VE BÜYÜK FOTOĞRAF -->
+    <!-- KART 1: BAŞLIK, TARİH VE BÜYÜK FOTOĞRAF -->
     <div class="card">
         <div class="top-header">
-            <div class="company-badge">MUĞLA İL JANDARMA KOMUTANLIĞI.</div>
+            <div class="company-badge">TÜRK SİLAHLI KUVVETLERİ</div>
             <div class="current-date-badge" id="currentDateBadge">--.--.----</div>
         </div>
 
-        <h1>Ahmet YILMAZ</h1>
-        <div class="subtitle">ASTSUBAY KIDEMLİ BAŞÇAVUŞ</div>
+        <h1>Mehmet YILMAZ</h1>
+        <div class="subtitle">Kıdemli Bando Astsubay</div>
         
         <div class="retirement-date-box">
             Emeklilik Tarihi: <strong>01.08.2026</strong>
         </div>
         
-        <!-- BÜYÜK GRUP FOTOĞRAFI -->
         <div class="hero-banner">
             <img src="ekip_buyuk.jpg" alt="Tüm Ekip Hatıra Fotoğrafı" class="zoomable-img">
-            <div class="hero-caption">Birlikte Geçen Unutulmaz Yılların Anısına (Dokun ve Büyüt 🔍)</div>
+            <div class="hero-caption">Silah Arkadaşlarıyla Geçen Onurlu Yılların Anısına 🔍</div>
         </div>
     </div>
-
-    <!-- ADIM 2: ANILARDAN OLUŞAN VEDA VİDEOSU -->
+    <!-- KART 2: VEDA VİDEOSU -->
     <div class="card">
         <h3 class="section-title">Anı Videosu</h3>
         <div class="media-container">
@@ -412,119 +487,109 @@
         </div>
     </div>
 
-    <!-- ADIM 3: İŞ ARKADAŞLARI İLE FOTOĞRAFLAR -->
+    <!-- KART 3: FOTOĞRAF GALERİSİ -->
     <div class="card">
-        <h3 class="section-title">Ekip ve Çalışma Anıları</h3>
+        <h3 class="section-title">Hizmet Anıları</h3>
         <div class="photo-gallery">
-            <div class="photo-card">
-                <img src="foto1.jpg" alt="Anı 1" class="zoomable-img">
-                <div class="photo-desc">Saha Ekibi ile</div>
-            </div>
-            <div class="photo-card">
-                <img src="foto2.jpg" alt="Anı 2" class="zoomable-img">
-                <div class="photo-desc">Atölye Anıları</div>
-            </div>
-            <div class="photo-card">
-                <img src="foto3.jpg" alt="Anı 3" class="zoomable-img">
-                <div class="photo-desc">Kutlamalar</div>
-            </div>
-            <div class="photo-card">
-                <img src="foto4.jpg" alt="Anı 4" class="zoomable-img">
-                <div class="photo-desc">Mola Sohbetleri</div>
-            </div>
-            <div class="photo-card">
-                <img src="foto5.jpg" alt="Anı 5" class="zoomable-img">
-                <div class="photo-desc">Proje Tamamlama</div>
-            </div>
-            <div class="photo-card">
-                <img src="foto6.jpg" alt="Anı 6" class="zoomable-img">
-                <div class="photo-desc">Veda Yemeği</div>
-            </div>
+            <div class="photo-card"><img src="foto1.jpg" alt="Anı 1" class="zoomable-img"><div class="photo-desc">Tören Anı</div></div>
+            <div class="photo-card"><img src="foto2.jpg" alt="Anı 2" class="zoomable-img"><div class="photo-desc">Görev Saati</div></div>
+            <div class="photo-card"><img src="foto3.jpg" alt="Anı 3" class="zoomable-img"><div class="photo-desc">Tatbikat</div></div>
+            <div class="photo-card"><img src="foto4.jpg" alt="Anı 4" class="zoomable-img"><div class="photo-desc">Silah Arkadaşları</div></div>
+            <div class="photo-card"><img src="foto5.jpg" alt="Anı 5" class="zoomable-img"><div class="photo-desc">Saha Görevi</div></div>
+            <div class="photo-card"><img src="foto6.jpg" alt="Anı 6" class="zoomable-img"><div class="photo-desc">Veda Yemeği</div></div>
         </div>
     </div>
 
-    <!-- ADIM 4: TEŞEKKÜR MESAJI -->
+    <!-- KART 4: TEŞEKKÜR MESAJI -->
     <div class="card">
         <h3 class="section-title">Sonsuz Teşekkürlerimizle</h3>
         <p class="message-text">
-            "Yıllar boyunca kurumumuza kattığın tüm emekler, göstermiş olduğun dostluk, tecrübe ve iş disiplinin için sonsuz teşekkür ederiz. Birlikte geçirdiğimiz her anı ve paylaştığımız başarıları gururla hatırlayacağız. Hayatının bu yeni döneminde sevdiklerinle birlikte sağlık, huzur ve mutluluk dileriz."
+            "Vatan hizmetinde geçen uzun yıllar boyunca sergilediğiniz üstün disiplin, tecrübe ve arkadaşlık ruhu için şükranlarımızı sunarız. Birlikte paylaştığımız zorluklar ve kazanılan başarılar daima gururla hatırlanacaktır. Emeklilik hayatınızda sevdiklerinizle birlikte sağlık, huzur ve mutluluk dileriz."
         </p>
     </div>
-
-    <!-- ADIM 5: EMEKLİLİK GÜN SAYACI -->
+    <!-- KART 5: EMEKLİLİK SAYACI -->
     <div class="card retirement-counter">
-        <div class="info-title" style="color: var(--accent-gold);">Emekliliğin Tadını Çıkarıyorsun</div>
+        <div style="color: var(--accent-gold); font-size: 0.9rem;">Emekliliğin Tadını Çıkarıyorsun</div>
         <div class="counter-number" id="daysCounter">0</div>
         <div style="font-size: 0.85rem; color: var(--text-secondary);">GÜNDÜR EMEKLİSİN</div>
     </div>
 
-    <!-- ADIM 6: EMEĞİ GEÇENLER LİSTESİ -->
+    <!-- KART 6: EMEĞİ GEÇENLER LİSTESİ -->
     <div class="card">
-        <h3 class="section-title" style="margin-bottom: 8px;">Emeği Geçen Çalışma Arkadaşları</h3>
-        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">Bu özel anı sayfasının hazırlanmasında katkıda bulunanlar:</p>
-        
+        <h3 class="section-title" style="margin-bottom: 8px;">Emeği Geçen Silah Arkadaşları</h3>
         <div class="contributors-grid">
             <div class="contributor-item">Ali KAYA</div>
-            <div class="contributor-item">Mehmet DEMİR</div>
-            <div class="contributor-item">Ayşe YILMAZ</div>
-            <div class="contributor-item">Fatma ÇELİK</div>
-            <div class="contributor-item">Mustafa ÖZTÜRK</div>
-            <div class="contributor-item">Hasan AYDIN</div>
+            <div class="contributor-item">Ahmet DEMİR</div>
+            <div class="contributor-item">Hasan ÖZTÜRK</div>
             <div class="contributor-item">Hüseyin ARSLAN</div>
-            <div class="contributor-item">Zeynep POLAT</div>
+            <div class="contributor-item">Mustafa AYDIN</div>
             <div class="contributor-item">Emre KOÇ</div>
             <div class="contributor-item">Burak ŞAHİN</div>
             <div class="contributor-item">Murat YILDIZ</div>
-            <div class="contributor-item">Sibel YILDIRIM</div>
             <div class="contributor-item">Ömer ERDOĞAN</div>
-            <div class="contributor-item">Elif YALÇIN</div>
             <div class="contributor-item">İbrahim ŞEN</div>
-            <div class="contributor-item">Kaan ACAR</div>
-            <div class="contributor-item">Gökhan KILIÇ</div>
-            <div class="contributor-item">Deniz GÜNEŞ</div>
-            <div class="contributor-item">Serkan BULUT</div>
-            <div class="contributor-item">Seda KESKİN</div>
-            <div class="contributor-item">Tolga ŞİMŞEK</div>
-            <div class="contributor-item">Merve ÖZCAN</div>
-            <div class="contributor-item">Volkan DOĞAN</div>
-            <div class="contributor-item">Gamze ASLAN</div>
-            <div class="contributor-item">Oğuzhan KAN</div>
-            <div class="contributor-item">Büşra YÜCEL</div>
-            <div class="contributor-item">Caner ŞAHİN</div>
-            <div class="contributor-item">Tuğba KAYA</div>
-            <div class="contributor-item">Yasin DEMİR</div>
-            <div class="contributor-item">Onur AKSOY</div>
         </div>
     </div>
 
     <footer>
-        Tüm Çalışma Arkadaşlarından Sevgilerle ❤️
+        Tüm Silah Arkadaşlarından Sevgilerle ❤️
     </footer>
 
 </div>
-
-<!-- TAM EKRAN FOTOĞRAFI GÖSTEREN MODAL -->
-<div class="lightbox-modal" id="lightboxModal">
-    <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <img src="" alt="Büyütülen Görsel" class="lightbox-img" id="lightboxImg">
+<!-- 📌 MODAL 1: ÖZ GEÇMİŞ -->
+<div id="cvModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('cvModal')">&times;</span>
+        <h2>📜 Öz Geçmiş</h2>
+        <div class="modal-body">
+            <p><strong>1998 - 2002:</strong> Bando Astsubay Hazırlama Okulu ve Sınıf Okulu Eğitimi</p>
+            <p><strong>2002:</strong> İlk kıta görevine başlangıç.</p>
+            <p><strong>2002 - 2026:</strong> Türk Silahlı Kuvvetleri bünyesinde Türkiye'nin çeşitli garnizonlarında Bando Astsubay olarak şerefle yürütülen görev süresi.</p>
+            <p><strong>01.08.2026:</strong> Kıdemli Bando Astsubay rütbesiyle kadrosuzluk/hizmet süresi tamamlanarak emeklilik.</p>
+        </div>
+    </div>
 </div>
 
+<!-- 📌 MODAL 2: GÖREV YERLERİ -->
+<div id="locationsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('locationsModal')">&times;</span>
+        <h2>📍 Görev Yapılan Yerler</h2>
+        <div class="modal-body">
+            <ul>
+                <li>Ankara - Mzk.K.lığı (2002 - 2007)</li>
+                <li>Erzurum - 9. Kor.K.lığı (2007 - 2012)</li>
+                <li>İzmir - Ege Ordu K.lığı (2012 - 2018)</li>
+                <li>Kıbrıs - KTKBK (2018 - 2021)</li>
+                <li>İstanbul - 1. Ordu K.lığı (2021 - 2026)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 📌 MODAL 3: TAKDİRLER VE ÖDÜLLER -->
+<div id="awardsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('awardsModal')">&times;</span>
+        <h2>🎖️ Takdir ve Ödüller</h2>
+        <div class="modal-body">
+            <ul>
+                <li>Üstün Hizmet ve Başarı Belgesi (3 Adet)</li>
+                <li>Şerit Rozet ve Övünç Madalyası</li>
+                <li>Tugay ve Ordu Komutanlığı Takdirnameleri</li>
+                <li>20 Yıl Hizmet Sadakat Madalyası</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 🔍 FOTOĞRAF BÜYÜTME (LIGHTBOX) OVERLAY -->
+<div id="imageLightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="Büyütülmüş Fotoğraf">
+</div>
 <script>
-    const retirementDateStr = "2026-08-01"; 
-
-    function updateCounter() {
-        const retirementDate = new Date(retirementDateStr);
-        const today = new Date();
-        const diffTime = today - retirementDate;
-        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        
-        if (diffDays < 0) {
-            document.getElementById('daysCounter').innerText = "0";
-        } else {
-            document.getElementById('daysCounter').innerText = diffDays;
-        }
-    }
-
+    // 📅 1. BUGÜNÜN TARİHİNİ ROZETE YAZDIRMA
     function setTodayDate() {
         const today = new Date();
         const day = String(today.getDate()).padStart(2, '0');
@@ -533,100 +598,64 @@
         document.getElementById('currentDateBadge').innerText = `${day}.${month}.${year}`;
     }
 
-    // FOTOĞRAF BÜYÜTME (LIGHTBOX) MANTIĞI
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const closeModal = document.getElementById('lightboxClose');
-    const zoomableImages = document.querySelectorAll('.zoomable-img');
+    // ⏳ 2. EMEKLİLİK GÜN SAYACINI HESAPLAMA
+    function updateRetirementCounter() {
+        const retirementDate = new Date("2026-08-01T00:00:00");
+        const today = new Date();
+        
+        // Zaman farkını gün olarak hesapla
+        const diffTime = today - retirementDate;
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        // Henüz emeklilik tarihi gelmediyse 0 göster
+        if (diffDays < 0) {
+            diffDays = 0;
+        }
+        
+        document.getElementById('daysCounter').innerText = diffDays;
+    }
 
-    zoomableImages.forEach(img => {
+    // 🚪 3. MODAL (POP-UP) AÇMA / KAPATMA FONKSİYONLARI
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "flex";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Modal dışına tıklayınca kapatma
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+        }
+    }
+
+    // 🔍 4. FOTOĞRAF BÜYÜTME (LIGHTBOX)
+    document.querySelectorAll('.zoomable-img').forEach(img => {
         img.addEventListener('click', function() {
-            modal.classList.add('active');
-            modalImg.src = this.src;
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = this.src;
+            lightbox.style.display = 'flex';
         });
     });
 
-    closeModal.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
+    function closeLightbox() {
+        document.getElementById('imageLightbox').style.display = 'none';
+    }
 
-    modal.addEventListener('click', (e) => {
-        if (e.target !== modalImg) {
-            modal.classList.remove('active');
-        }
-    });
-
-    setTodayDate();
-    updateCounter();
+    // SAYFA YÜKLENDİĞİNDE HESAPLAMALARI ÇALIŞTIR
+    window.onload = function() {
+        setTodayDate();
+        updateRetirementCounter();
+    };
 </script>
-
-<nav class="sticky-nav">
-    <div class="nav-btn" onclick="openModal('cvModal')" data-tooltip="Öz Geçmiş">📜</div>
-    <div class="nav-btn" onclick="openModal('locationsModal')" data-tooltip="Görev Yerleri">📍</div>
-    <div class="nav-btn" onclick="openModal('awardsModal')" data-tooltip="Takdirler">🎖️</div>
-</nav>
-
-<!-- 📜 MODAL 1: ÖZ GEÇMİŞ -->
-<div class="modal-overlay" id="cvModal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeModal('cvModal')">&times;</span>
-        <h3 style="color:#d4af37; margin-bottom:15px;">📜 Öz Geçmiş</h3>
-        <p style="color:#9ea7b3; font-size:0.9rem; line-height:1.6;">
-            Mehmet YILMAZ, vatanına ve milletine sadakatle hizmet etmiş, Türk Silahlı Kuvvetleri bünyesinde uzun yıllar başarıyla görev yapmıştır.
-        </p>
-    </div>
-</div>
-
-<!-- 📍 MODAL 2: GÖREV YERLERİ -->
-<div class="modal-overlay" id="locationsModal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeModal('locationsModal')">&times;</span>
-        <h3 style="color:#d4af37; margin-bottom:15px;">📍 Görev Yapılan Birlikler</h3>
-        <ul style="color:#f0f6fc; text-align:left; font-size:0.9rem; line-height:1.8;">
-            <li>🔹 1. Ordu Komutanlığı - İstanbul</li>
-            <li>🔹 3. Ordu Komutanlığı - Erzincan</li>
-            <li>🔹 Ege Ordu Komutanlığı - İzmir</li>
-            <li>🔹 Kara Kuvvetleri Komutanlığı - Ankara</li>
-        </ul>
-    </div>
-</div>
-
-<!-- 🎖️ MODAL 3: TAKDİRLER -->
-<div class="modal-overlay" id="awardsModal">
-    <div class="modal-content">
-        <span class="modal-close" onclick="closeModal('awardsModal')">&times;</span>
-        <h3 style="color:#d4af37; margin-bottom:15px;">🎖️ Takdirler ve Ödüller</h3>
-        <p style="color:#f0f6fc; font-size:0.9rem;">🥇 Üstün Hizmet Belgesi</p>
-        <p style="color:#f0f6fc; font-size:0.9rem; margin-top:8px;">🎖️ Başarı Şerit Rozeti</p>
-    </div>
-</div>
-
-<script>
-    // Pencereyi Açma Fonksiyonu
-    function openModal(id) {
-        var modal = document.getElementById(id);
-        if (modal) {
-            modal.style.display = 'flex';
-        }
-    }
-
-    // Pencereyi Kapama Fonksiyonu
-    function closeModal(id) {
-        var modal = document.getElementById(id);
-        if (modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-    // Pencere Dışına Tıklayınca Kapatma
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal-overlay')) {
-            event.target.style.display = 'none';
-        }
-    }
-</script>
-
-
 
 </body>
 </html>
+
+
+
+
+
