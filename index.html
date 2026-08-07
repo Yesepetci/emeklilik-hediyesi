@@ -6,6 +6,36 @@
     <title>Emeklilik Anı Sayfası</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+    
+    .sticky-nav {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    display: flex;
+    gap: 10px;
+    background: rgba(11, 14, 20, 0.85);
+    padding: 8px 12px;
+    border-radius: 30px;
+    border: 1px solid #d4af37;
+    backdrop-filter: blur(10px);
+}
+.nav-btn {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    color: #f3e5ab;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+    
+    
         :root {
             --bg-color: #0b0e14;
             --card-bg: rgba(22, 27, 34, 0.85);
@@ -490,6 +520,13 @@
     setTodayDate();
     updateCounter();
 </script>
+
+<nav class="sticky-nav">
+    <div class="nav-btn" onclick="openModal('cvModal')" data-tooltip="Öz Geçmiş">📜</div>
+    <div class="nav-btn" onclick="openModal('locationsModal')" data-tooltip="Görev Yerleri">📍</div>
+    <div class="nav-btn" onclick="openModal('awardsModal')" data-tooltip="Takdirler">🎖️</div>
+</nav>
+
 
 </body>
 </html>
