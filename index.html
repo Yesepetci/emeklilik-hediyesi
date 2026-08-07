@@ -7,6 +7,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
     
+    .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #161b22;
+    border: 1px solid #d4af37;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.8rem;
+    color: #d4af37;
+    cursor: pointer;
+}
+
+    
+    
     .sticky-nav {
     position: fixed;
     top: 15px;
@@ -526,6 +565,67 @@
     <div class="nav-btn" onclick="openModal('locationsModal')" data-tooltip="Görev Yerleri">📍</div>
     <div class="nav-btn" onclick="openModal('awardsModal')" data-tooltip="Takdirler">🎖️</div>
 </nav>
+
+<!-- 📜 MODAL 1: ÖZ GEÇMİŞ -->
+<div class="modal-overlay" id="cvModal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('cvModal')">&times;</span>
+        <h3 style="color:#d4af37; margin-bottom:15px;">📜 Öz Geçmiş</h3>
+        <p style="color:#9ea7b3; font-size:0.9rem; line-height:1.6;">
+            Mehmet YILMAZ, vatanına ve milletine sadakatle hizmet etmiş, Türk Silahlı Kuvvetleri bünyesinde uzun yıllar başarıyla görev yapmıştır.
+        </p>
+    </div>
+</div>
+
+<!-- 📍 MODAL 2: GÖREV YERLERİ -->
+<div class="modal-overlay" id="locationsModal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('locationsModal')">&times;</span>
+        <h3 style="color:#d4af37; margin-bottom:15px;">📍 Görev Yapılan Birlikler</h3>
+        <ul style="color:#f0f6fc; text-align:left; font-size:0.9rem; line-height:1.8;">
+            <li>🔹 1. Ordu Komutanlığı - İstanbul</li>
+            <li>🔹 3. Ordu Komutanlığı - Erzincan</li>
+            <li>🔹 Ege Ordu Komutanlığı - İzmir</li>
+            <li>🔹 Kara Kuvvetleri Komutanlığı - Ankara</li>
+        </ul>
+    </div>
+</div>
+
+<!-- 🎖️ MODAL 3: TAKDİRLER -->
+<div class="modal-overlay" id="awardsModal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal('awardsModal')">&times;</span>
+        <h3 style="color:#d4af37; margin-bottom:15px;">🎖️ Takdirler ve Ödüller</h3>
+        <p style="color:#f0f6fc; font-size:0.9rem;">🥇 Üstün Hizmet Belgesi</p>
+        <p style="color:#f0f6fc; font-size:0.9rem; margin-top:8px;">🎖️ Başarı Şerit Rozeti</p>
+    </div>
+</div>
+
+<script>
+    // Pencereyi Açma Fonksiyonu
+    function openModal(id) {
+        var modal = document.getElementById(id);
+        if (modal) {
+            modal.style.display = 'flex';
+        }
+    }
+
+    // Pencereyi Kapama Fonksiyonu
+    function closeModal(id) {
+        var modal = document.getElementById(id);
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Pencere Dışına Tıklayınca Kapatma
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+            event.target.style.display = 'none';
+        }
+    }
+</script>
+
 
 
 </body>
